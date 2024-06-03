@@ -1,0 +1,52 @@
+sudo systemctl restart mongod
+
+
+Adım 1: Dotnet İşlemlerini Durdurun
+Öncelikle, tüm dotnet işlemlerini durdurun. Linux kullanıyorsanız, şu komutları kullanarak bunu yapabilirsiniz:
+
+bash
+Kodu kopyala
+ps aux | grep dotnet
+Bu komut, çalışan tüm dotnet işlemlerini listeler. Listeyi gözden geçirin ve çalışan tüm dotnet işlemlerini durdurmak için kill komutunu kullanın. Örneğin:
+
+bash
+Kodu kopyala
+kill -9 <process_id>
+Adım 2: bin ve obj Klasörlerini Temizleyin
+bin ve obj klasörlerini temizlemek, bu tür sorunları çözebilir. Proje klasörünüzde aşağıdaki komutları çalıştırarak bu klasörleri temizleyin:
+
+bash
+Kodu kopyala
+rm -rf bin obj
+Adım 3: Projeyi Temizleyin ve Yeniden Derleyin
+Projeyi temizleyin ve yeniden derleyin:
+
+bash
+Kodu kopyala
+dotnet clean
+dotnet build
+Adım 4: Projeyi Yeniden Çalıştırın
+Projeyi tekrar çalıştırın:
+
+bash
+Kodu kopyala
+dotnet run
+Adım 5: Dosya İzinlerini Kontrol Edin
+Eğer sorun devam ederse, dosya izinlerini kontrol edin. Bazen izin sorunları bu tür hatalara neden olabilir. Proje dizinindeki dosyaların sahipliğini ve izinlerini kontrol edin ve gerekli izinleri verin:
+
+bash
+Kodu kopyala
+sudo chown -R $USER:$USER /path/to/your/project
+chmod -R 755 /path/to/your/project
+Özet
+Tüm dotnet işlemlerini durdurun.
+bin ve obj klasörlerini silin.
+Projeyi temizleyin ve yeniden derleyin.
+Projeyi tekrar çalıştırın.
+Gerekirse dosya izinlerini kontrol edin ve düzeltin.
+Bu adımlar genellikle bu tür hataları çözer. Eğer sorun devam ederse, daha fazla ayrıntıya ihtiyacımız olabilir.
+
+
+
+
+
