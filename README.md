@@ -78,3 +78,12 @@ The deployment script was written in the `scripts/deploy.js` file and deployed t
 npx hardhat run scripts/deploy.js --network sepolia
 ```
 This setup allows seamless deployment and interaction with the contract on the testnet environment.
+
+
+### Interaction with the Contract on the Client
+
+The **Ethers.js** library was used for client-side interactions with the contract. After sending a connection request with `request({ method: 'eth_requestAccounts' })`, the wallet provider and signer were obtained from the `ethereum` object within `window`. This setup enables relevant wallet interactions.
+
+Using Ethers.js, a **contract object** was created. In the `constants` file, the address of the contract deployed on the Sepolia network and its ABI are stored. This contract object is essential for sending requests.
+
+The related functions can be found in the `src/context` directory, specifically within `HashContext` and `WalletContext`.
